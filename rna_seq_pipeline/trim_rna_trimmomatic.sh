@@ -46,7 +46,7 @@ case $key in
     shift
     ;;
     --output)
-    OUTFNAMEBASE="$2"
+    OUTPUT_BASE="$2"
     shift
     ;;
     --ncpus)
@@ -75,9 +75,9 @@ then
   exit 1
 fi
 
-if [ -z "$OUTFNAMEBASE" ] || [ ! -e $(dirname ${OUTFNAMEBASE}) ]
+if [ -z "$OUTPUT_BASE" ] || [ ! -e $(dirname ${OUTPUT_BASE}) ]
 then
-  (>&2 echo "error: output path (${OUTFNAMEBASE}) does not exist.")
+  (>&2 echo "error: output path (${OUTPUT_BASE}) does not exist.")
   exit 1
 fi
 
