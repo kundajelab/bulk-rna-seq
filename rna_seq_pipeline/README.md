@@ -6,6 +6,8 @@ module load rsem
 module load trimmomatic  
 ```
 Adapters for trimmomatic are in `/software/trimmomatic/0.39/adapters` 
+Running `module load trimmomatic` will place the .jar file for trimmomatic on your path: `/software/trimmomatic/0.39/`
+
 
 The STAR and RSEM genomes for hg38 are in `/mnt/data`: 
 ```
