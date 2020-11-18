@@ -110,7 +110,7 @@ echo "STAR version: ($star_version)"
 
 STAR \
     --genomeDir "${GENOMEDIR}" \
-    --readFilesIn "${read1_fq_gz}" "${read2_fq_gz}" \
+    --readFilesIn "${R1PATH}" "${R2PATH}" \
     --readFilesCommand zcat \
     --runThreadN ${NCPU} \
     --genomeLoad NoSharedMemory \
