@@ -52,6 +52,10 @@ case $key in
     OUTFNAMEBASE="$2"
     shift
     ;;
+    --outTmpDir)
+    OUTPUTTEMPDIR="$2"
+    shift
+    ;;
     *)
     ;;
 esac
@@ -120,4 +124,5 @@ STAR \
     --sjdbScore 1 \
     --limitBAMsortRAM  60000000000 \
     --twopassMode Basic \
-    --twopass1readsN -1 
+    --twopass1readsN -1 \
+    --outTmpDir $OUTPUTTEMPDIR

@@ -89,24 +89,16 @@ cat <( samtools view -H "$transcriptBAM" ) <( samtools view -@ $NCPU "$transcrip
 
 quantOutputBasePath="${outputBase}.rsem.quant"
 quantLoggingBasePath="${outputBase}.rsem.log.txt"
-
-rsem-calculate-expression \
-    --bam \
-    --estimate-rspd \
-    --no-bam-output \
-    --seed 12345 \
-    -p $NCPU \
-    --ci-memory 30000 \
-    --paired-end \
-    --forward-prob 0 \  # for stranded reads
-    "${outputBase}_Aligned.toTranscriptome.sorted.bam" \
-    "${rsemGenomeDir}" \
-    "${quantOutputBasePath}" \
-    >& "${quantLoggingBasePath}"
+echo "${outputBase}_Aligned.toTranscriptome.sorted.bam"
+echo "${rsemGenomeDir}"
+echo "${quantOutputBasePath}"
+echo "${quantLoggingBasePath}"
+echo $NCPU
+rsem-calculate-expression --paired-end --alignments --estimate-rspd --no-bam-output --seed 12345 -p $NCPU --ci-memory 30000 --forward-prob 0 "${outputBase}_Aligned.toTranscriptome.sorted.bam" "${rsemGenomeDir}/rsem" "${quantOutputBasePath}" >& "${quantLoggingBasePath}"
 
 #### Optional: RSEM diagnostic plot creation ###
 # Notes:
 # 1. rsem-plot-model requires R (and the Rscript executable)
 # 2. This command produces the file Quant.pdf, which contains multiple plots
 
-rsem-plot-model "${quantOutputBasePath}" "${outputBase}_rsem_quant.pdf"
+#rsem-plot-model "${quantOutputBasePath}" "${outputBase}_rsem_quant.pdf"
